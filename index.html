@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ta' Linda | Flores Eternas & Detalles en Quillabamba</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af', 400: '#fb7185', 500: '#f43f5e', 600: '#e11d48', 700: '#be123c', 800: '#9f1239', 900: '#881337' },
+                        gold: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' }
+                    },
+                    fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Plus Jakarta Sans', 'sans-serif'], cursive: ['Dancing Script', 'cursive'] }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .glass-header { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .hero-gradient { background: radial-gradient(circle at 50% 0%, #fff1f2 0%, #fff 75%); }
+        .cart-scroll::-webkit-scrollbar { width: 5px; }
+        .cart-scroll::-webkit-scrollbar-thumb { background-color: #fca5a5; border-radius: 9999px; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans bg-rose-50/30 text-gray-800 antialiased selection:bg-rose-500 selection:text-white">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-6 left-1/2 -translate-x-1/2 bg-gray-900/90 text-white px-6 py-3.5 rounded-2xl shadow-2xl z-50 transition-all duration-300 opacity-0 pointer-events-none flex items-center gap-3 border border-rose-500/30">
+        <div class="bg-rose-500 text-white rounded-full p-1"><i data-lucide="check" class="w-4 h-4"></i></div>
+        <span id="toast-message" class="text-sm font-medium">Producto añadido al carrito</span>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-gradient-to-r from-rose-700 via-brand-600 to-rose-700 text-white text-xs py-2 px-4 text-center font-medium tracking-wide flex justify-center items-center gap-2 shadow-inner">
+        <i data-lucide="sparkles" class="w-4 h-4 text-amber-300 animate-pulse"></i>
+        <span>Envíos a Domicilio y Delivery Express en toda Quillabamba</span>
+        <i data-lucide="sparkles" class="w-4 h-4 text-amber-300 animate-pulse"></i>
+    </div>
+
+    <!-- Main Header -->
+    <header class="glass-header sticky top-0 z-40 border-b border-rose-100 shadow-sm transition-all duration-300 relative overflow-hidden bg-gradient-to-r from-rose-50/60 via-white to-rose-50/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex items-center justify-between py-2 sm:py-3 gap-2 sm:gap-4">
+                <a href="#" class="flex items-center group shrink-0 py-1">
+                    <div class="relative w-20 h-20 sm:w-28 sm:h-28 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 drop-shadow-md">
+                        <svg class="w-full h-full" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="30" fill="#F8B4C9" opacity="0.2"/>
+                            <path d="M150 18 C162 18 170 24 180 27 C191 30 201 28 210 34 C219 40 223 50 231 58 C238 66 248 70 254 79 C260 88 258 98 261 109 C264 119 270 127 270 138 C270 150 264 158 261 168 C258 179 260 189 254 198 C248 207 238 211 231 219 C223 227 219 237 210 243 C201 249 191 247 180 250 C170 253 162 259 150 259 C138 259 130 253 120 250 C109 247 99 249 90 243 C81 237 77 227 69 219 C62 211 52 207 46 198 C40 189 42 179 39 168 C36 158 30 150 30 138 C30 127 36 119 39 109 C42 98 40 88 46 79 C52 70 62 66 69 58 C77 50 81 40 90 34 C99 28 109 30 120 27 C130 24 138 18 150 18 Z" fill="#FFFBF7" stroke="#F48FB1" stroke-width="4"/>
+                            <path d="M150 28 C160 28 167 33 175 36 C184 39 193 37 201 42 C209 47 213 55 220 62 C226 69 235 73 240 81 C245 89 243 97 246 107 C249 116 254 123 254 133 C254 143 249 150 246 160 C243 169 245 178 240 186 C235 194 226 198 220 205 C213 212 209 220 201 225 C193 230 184 228 175 231 C167 234 160 239 150 239 C140 239 133 234 125 231 C116 228 107 230 99 225 C91 220 87 212 80 205 C74 198 65 194 60 186 C55 178 57 169 54 160 C51 150 46 143 46 133 C46 123 51 116 54 107 C57 97 55 89 60 81 C65 73 74 69 80 62 C87 55 91 47 99 42 C107 37 116 39 125 36 C133 33 140 28 150 28 Z" fill="none" stroke="#E91E63" stroke-width="2" stroke-opacity="0.6"/>
+                            <path d="M135 110 C135 105 165 105 165 110 L175 116 C188 135 188 160 172 172 C158 182 142 182 128 172 C112 160 112 135 125 116 Z" fill="none" stroke="#E91E63" stroke-width="3"/>
+                            <path d="M133 115 H167" stroke="#E91E63" stroke-width="2"/>
+                            <path d="M135 118 H165" stroke="#E91E63" stroke-width="2"/>
+                            <path d="M150 170 L150 75" stroke="#1B5E20" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M148 165 L125 85" stroke="#1B5E20" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M152 165 L175 85" stroke="#1B5E20" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M138 120 C125 110 120 95 120 95 C120 95 135 100 142 112 Z" fill="#1B5E20"/>
+                            <path d="M162 120 C175 110 180 95 180 95 C180 95 165 100 158 112 Z" fill="#1B5E20"/>
+                            <path d="M148 130 C138 125 135 115 135 115 C135 115 145 118 149 125 Z" fill="#1B5E20"/>
+                            <path d="M125 85 C115 75 115 55 125 50 C130 60 135 65 130 80 Z" fill="#FF8A80" stroke="#E91E63" stroke-width="2"/>
+                            <path d="M125 50 C120 58 118 70 125 85 C112 75 118 55 125 50 Z" fill="#FF5252" opacity="0.8"/>
+                            <path d="M175 85 C185 75 185 55 175 50 C170 60 165 65 170 80 Z" fill="#FF8A80" stroke="#E91E63" stroke-width="2"/>
+                            <path d="M175 50 C180 58 182 70 175 85 C188 75 182 55 175 50 Z" fill="#FF5252" opacity="0.8"/>
+                            <path d="M150 75 C138 62 138 42 150 36 C157 48 162 54 156 70 Z" fill="#FF8A80" stroke="#E91E63" stroke-width="2"/>
+                            <path d="M150 36 C143 45 140 58 150 75 C135 62 142 42 150 36 Z" fill="#FF5252" opacity="0.8"/>
+                            <text x="150" y="208" text-anchor="middle" font-family="'Dancing Script', cursive, sans-serif" font-size="44" font-weight="bold" fill="#E91E63">Ta' Linda</text>
+                            <path id="textPath" d="M 70 230 A 100 100 0 0 0 230 230" fill="none"/>
+                            <text font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#E91E63" letter-spacing="2.5">
+                                <textPath href="#textPath" startOffset="50%" text-anchor="middle">DETALLES Y REGALOS</textPath>
+                            </text>
+                        </svg>
+                    </div>
+                </a>
+
+                <div class="flex-1 max-w-md mx-2 sm:mx-4 flex flex-col gap-1.5 items-center">
+                    <div class="relative w-full">
+                        <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-rose-400"></i>
+                        <input type="text" id="search-input" onkeyup="filterProductsBySearch(this.value)" placeholder="Buscar rosas, girasoles, cúpulas..." class="w-full pl-10 pr-4 py-2 bg-white/90 border border-rose-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all shadow-xs placeholder:text-gray-400">
+                    </div>
+                    <div class="hidden sm:flex items-center gap-3 text-[11px] font-semibold text-rose-800">
+                        <span class="flex items-center gap-1 bg-rose-100/70 px-2.5 py-0.5 rounded-full"><i data-lucide="shield-check" class="w-3 h-3 text-rose-600"></i> Flores Preservadas</span>
+                        <span class="flex items-center gap-1 bg-amber-100/70 px-2.5 py-0.5 rounded-full"><i data-lucide="heart" class="w-3 h-3 text-amber-600"></i> Hecho con Amor</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                    <a href="https://wa.me/51927274783?text=Hola%20Ta'%20Linda,%20quisiera%20consultar%20sobre%20un%20detalle%20personalizado" target="_blank" class="hidden md:flex items-center gap-2 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-xs px-3.5 py-2.5 rounded-full font-medium transition-colors">
+                        <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600 fill-emerald-600"></i>
+                        <span>Atención para detalles personalizados</span>
+                    </a>
+                    <button onclick="toggleCart()" class="relative bg-rose-600 hover:bg-rose-700 text-white p-2.5 sm:px-4 sm:py-2.5 rounded-2xl transition-all shadow-md hover:shadow-rose-300 flex items-center gap-2 group">
+                        <i data-lucide="shopping-bag" class="w-5 h-5 transition-transform group-hover:scale-110"></i>
+                        <span class="hidden sm:inline font-semibold text-xs">Carrito</span>
+                        <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-amber-400 text-gray-900 font-extrabold text-xs w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-xs">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between border-t border-rose-100/70 py-2">
+                <nav id="category-nav" class="flex justify-center overflow-x-auto no-scrollbar text-xs font-medium text-gray-600 space-x-6 w-full"></nav>
+                <div class="flex items-center gap-2">
+                    <button id="admin-cat-btn" onclick="openCatModal()" class="hidden bg-rose-700 hover:bg-rose-800 text-white text-[11px] font-bold px-3 py-1.5 rounded-xl flex items-center gap-1 shadow-sm transition shrink-0 ml-2">
+                        <i data-lucide="settings" class="w-3.5 h-3.5"></i> Categorías
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient relative overflow-hidden py-12 md:py-20 border-b border-rose-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="text-center md:text-left space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-100/80 text-rose-700 text-xs font-bold uppercase tracking-wider border border-rose-200">
+                        <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-500 fill-rose-500"></i> Flores que Duran Para Siempre
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-tight">
+                        Detalles Eternos en <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-rose-500 to-amber-600">Quillabamba</span>
+                    </h1>
+                    <p class="text-gray-600 text-base sm:text-lg max-w-xl mx-auto md:mx-0">
+                        Expresa tus sentimientos con arreglos de flores eternas hechas a mano con amor. El regalo perfecto para aniversarios, cumpleaños y momentos inolvidables.
+                    </p>
+                    <div class="pt-2 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                        <a href="#catálogo" class="bg-rose-600 hover:bg-rose-700 text-white font-semibold px-6 py-3.5 rounded-2xl shadow-lg shadow-rose-200 hover:shadow-xl transition flex items-center justify-center gap-2">
+                            <span>Ver Catálogo Exclusivo</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <button onclick="openQuizModal()" class="bg-white hover:bg-rose-50 text-rose-700 font-semibold px-6 py-3.5 rounded-2xl border border-rose-200 shadow-sm transition flex items-center justify-center gap-2">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i>
+                            <span>Asistente de Regalos</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative flex justify-center">
+                    <div class="relative w-full max-w-md bg-white p-4 rounded-3xl shadow-2xl border border-rose-100 rotate-1 transform hover:rotate-0 transition duration-500">
+                        <div class="relative h-80 sm:h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-rose-400 via-rose-500 to-amber-500 flex items-center justify-center">
+                            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&q=80&w=800" alt="Arreglos Florales Eternos Ta' Linda" class="w-full h-full object-cover relative z-0" onerror="this.style.display='none'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-950/85 via-gray-900/30 to-transparent flex flex-col justify-end p-6 text-white z-10">
+                                <span class="text-xs uppercase tracking-widest text-amber-300 font-bold flex items-center gap-1.5"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Colección Quillabamba</span>
+                                <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mt-1">Flores Eternas Hechas a Mano</h3>
+                                <p class="text-xs text-rose-100 mt-1 flex items-center gap-1.5"><i data-lucide="truck" class="w-3.5 h-3.5 text-amber-400"></i> Delivery rápido a domicilio en toda la ciudad</p>
+                            </div>
+                        </div>
+                        <div class="absolute -top-4 -right-4 bg-gradient-to-r from-amber-400 to-amber-500 text-gray-950 font-extrabold text-xs px-4 py-2 rounded-2xl shadow-lg border-2 border-white animate-float flex items-center gap-1.5">
+                            <span>100% Duraderas</span> ✨
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Propositions -->
+    <section class="py-6 bg-white border-b border-rose-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-100 flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mb-2"><i data-lucide="truck" class="w-5 h-5"></i></div>
+                    <h4 class="font-bold text-sm text-gray-800">Delivery Quillabamba</h4>
+                    <p class="text-xs text-gray-500 mt-0.5">Envíos directos a la puerta</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-100 flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mb-2"><i data-lucide="heart-handshake" class="w-5 h-5"></i></div>
+                    <h4 class="font-bold text-sm text-gray-800">100% Hecho a Mano</h4>
+                    <p class="text-xs text-gray-500 mt-0.5">Detalles finos y duraderos</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-100 flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mb-2"><i data-lucide="message-square" class="w-5 h-5"></i></div>
+                    <h4 class="font-bold text-sm text-gray-800">Pedido por WhatsApp</h4>
+                    <p class="text-xs text-gray-500 mt-0.5">Atención personalizada inmediata</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-100 flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mb-2"><i data-lucide="gift" class="w-5 h-5"></i></div>
+                    <h4 class="font-bold text-sm text-gray-800">Tarjeta Personalizada</h4>
+                    <p class="text-xs text-gray-500 mt-0.5">Incluye nota dedicatoria gratis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="catálogo" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+            <div>
+                <span class="text-rose-600 font-bold text-xs uppercase tracking-widest flex items-center gap-1"><i data-lucide="flower-2" class="w-4 h-4"></i> Catálogo Exclusivo</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-1">Arreglos Florales Eternos</h2>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+                <span id="product-count" class="text-xs font-semibold text-gray-500">Cargando catálogo...</span>
+                <button id="admin-add-btn" onclick="openAddModal()" class="hidden bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3 py-2 rounded-xl flex items-center gap-1 shadow-sm transition">
+                    <i data-lucide="plus" class="w-4 h-4"></i> Añadir Producto
+                </button>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid"></div>
+    </section>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="fixed inset-0 bg-gray-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative border border-rose-100 overflow-hidden">
+            <button onclick="closeDetailModal()" class="absolute top-4 right-4 z-10 bg-white/80 hover:bg-white text-gray-400 hover:text-rose-600 p-2 rounded-full shadow-md transition"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <div class="space-y-4">
+                <div class="relative w-full h-64 bg-rose-50 rounded-2xl overflow-hidden border border-rose-100">
+                    <img id="detail-img" src="" alt="Detalle Producto" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <span id="detail-category" class="text-xs font-bold text-rose-500 uppercase tracking-widest"></span>
+                    <h3 id="detail-name" class="text-2xl font-serif font-bold text-gray-900 mt-1"></h3>
+                    <p id="detail-description" class="text-sm text-gray-600 mt-2 leading-relaxed bg-rose-50/50 p-3.5 rounded-2xl border border-rose-100/60"></p>
+                </div>
+                <div class="flex items-center justify-between pt-3 border-t border-rose-100">
+                    <div>
+                        <span class="text-xs text-gray-400 block">Precio</span>
+                        <span id="detail-price" class="text-2xl font-bold text-rose-600 font-serif"></span>
+                    </div>
+                    <button id="detail-add-btn" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-6 py-3 rounded-2xl shadow-lg shadow-rose-200 transition transform active:scale-95 flex items-center gap-2">
+                        <i data-lucide="shopping-bag" class="w-4 h-4"></i><span>Agregar al Carrito</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Callout -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-gradient-to-r from-rose-900 via-rose-800 to-rose-950 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="space-y-3 max-w-xl text-center md:text-left z-10">
+                <span class="bg-amber-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">¿Diseño Personalizado?</span>
+                <h3 class="text-2xl md:text-3xl font-serif font-bold">¿Tienes una idea especial o modelo personalizado?</h3>
+                <p class="text-rose-100 text-sm">Preparamos cajas con nombres, colores específicos de rosas eternas, peluches gigantes y combinaciones únicas. ¡Escríbenos directamente!</p>
+            </div>
+            <a href="https://wa.me/51927274783?text=Hola%20Ta'%20Linda,%20quisiera%20cotizar%20un%20arreglo%20personalizado" target="_blank" class="z-10 bg-white hover:bg-rose-50 text-rose-700 font-bold px-8 py-4 rounded-2xl shadow-lg transition flex items-center gap-3 whitespace-nowrap transform hover:scale-105">
+                <i data-lucide="message-circle" class="w-5 h-5 text-green-600"></i><span>Cotizar por WhatsApp</span>
+            </a>
+            <div class="absolute -right-10 -bottom-10 opacity-10 text-white pointer-events-none"><i data-lucide="flower" class="w-80 h-80"></i></div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-12 bg-rose-50/50 border-t border-rose-100 mt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-10">
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-gray-900">Clientes Felices en Quillabamba</h2>
+                <p class="text-gray-500 text-xs sm:text-sm mt-1">Nuestra mejor garantía son las sonrisas de quienes reciben nuestros detalles.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-100 space-y-3">
+                    <div class="flex text-amber-400 gap-1"><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i></div>
+                    <p class="text-gray-600 text-sm italic">"Encargué el box de girasoles eternas para mi novia. Quedó sorprendidísima y las flores se ven intactas. Excelente servicio de delivery."</p>
+                    <div class="font-bold text-xs text-rose-700 font-sans">— Carlos M., Quillabamba</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-100 space-y-3">
+                    <div class="flex text-amber-400 gap-1"><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i></div>
+                    <p class="text-gray-600 text-sm italic">"La cúpula de rosas es preciosa. Los acabados son super dedicados y la atención por WhatsApp fue muy amable y rápida."</p>
+                    <div class="font-bold text-xs text-rose-700 font-sans">— Mariela G., Quillabamba</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-100 space-y-3">
+                    <div class="flex text-amber-400 gap-1"><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i><i data-lucide="star" class="w-4 h-4 fill-amber-400"></i></div>
+                    <p class="text-gray-600 text-sm italic">"Súper recomendado para detalles del Día de la Madre y aniversarios. ¡Muy buena calidad y acabados hermosos!"</p>
+                    <div class="font-bold text-xs text-rose-700 font-sans">— Andrea V., Quillabamba</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2 cursor-pointer select-none" onclick="handleSecretAdminTrigger()" title="Ta' Linda">
+                    <span class="font-cursive text-3xl font-bold text-rose-500">Ta' Linda</span>
+                    <span class="text-[10px] font-bold tracking-widest text-amber-400 uppercase">Detalles</span>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed">Arreglos de flores eternas hechas con amor y dedicación en Quillabamba, Cusco. El regalo inolvidable que perdura en el tiempo.</p>
+            </div>
+            <div class="space-y-3">
+                <h4 class="font-serif font-bold text-sm text-rose-400">Contacto & Ubicación</h4>
+                <div class="space-y-2 text-xs text-gray-400">
+                    <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-rose-500"></i><span>Quillabamba, Cusco - Perú</span></p>
+                    <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-rose-500"></i><span>WhatsApp: +51 927 274 783</span></p>
+                    <p class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-rose-500"></i><span>Atención: Lunes a Sábado (8:00 am - 8:00 pm)</span></p>
+                </div>
+            </div>
+            <div class="space-y-3">
+                <h4 class="font-serif font-bold text-sm text-rose-400">Garantía Ta' Linda</h4>
+                <p class="text-xs text-gray-400 leading-relaxed">Todas nuestras rosas y girasoles preservadas están elaboradas artesanalmente para garantizar la máxima duración sin perder su color natural.</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-6 border-t border-gray-900 text-center text-xs text-gray-500">
+            &copy; 2026 Ta' Linda Detalles y Regalos — Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- ADMIN AUTH MODAL -->
+    <div id="admin-auth-modal" class="fixed inset-0 bg-gray-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl relative border border-rose-100 text-center">
+            <button onclick="closeAdminAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-rose-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-3"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+            <h3 class="text-lg font-serif font-bold text-gray-900">Acceso Propietario</h3>
+            <p class="text-xs text-gray-500 mt-1 mb-4">Ingresa tu contraseña para gestionar productos del catálogo.</p>
+            <form onsubmit="verifyAdminPassword(event)" class="space-y-3">
+                <div>
+                    <div class="relative flex items-center">
+                        <input type="password" id="admin-password-input" placeholder="Contraseña de administrador" class="w-full border border-gray-300 rounded-xl pl-4 pr-11 py-2.5 text-sm text-gray-900 font-bold text-center focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500">
+                        <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 text-gray-500 hover:text-rose-600 transition p-1 rounded-lg focus:outline-none"><i id="password-toggle-icon" data-lucide="eye" class="w-4 h-4"></i></button>
+                    </div>
+                    <p id="admin-auth-error" class="text-xs text-rose-600 font-semibold mt-1.5 hidden">Contraseña incorrecta. Inténtalo de nuevo.</p>
+                </div>
+                <button type="submit" class="w-full py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl text-xs shadow-md transition">Ingresar al Panel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- EDIT PRODUCT MODAL -->
+    <div id="edit-modal" class="fixed inset-0 bg-gray-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative border border-rose-100 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2"><i data-lucide="edit" class="w-5 h-5 text-rose-600"></i><span>Editar Producto</span></h3>
+                <button onclick="closeEditModal()" class="text-gray-400 hover:text-rose-600 transition"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <form id="edit-product-form" onsubmit="handleUpdateProduct(event)" class="space-y-4">
+                <input type="hidden" id="edit-prod-id">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Nombre del arreglo</label>
+                    <input type="text" id="edit-prod-name" required class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-rose-500">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Precio Normal (S/)</label>
+                        <input type="number" step="0.50" id="edit-prod-price" required class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-rose-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Precio Oferta (S/ - Opcional)</label>
+                        <input type="number" step="0.50" id="edit-prod-sale-price" placeholder="Dejar vacío si no hay" class="w-full border border-amber-300 bg-amber-50/30 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-amber-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Categoría</label>
+                    <select id="edit-prod-category" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-rose-500"></select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Descripción / Detalles</label>
+                    <textarea id="edit-prod-description" rows="3" class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-rose-500"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Cambiar foto desde tu dispositivo</label>
+                    <input type="file" id="edit-prod-file" accept="image/*" onchange="previewEditSelectedImage(event)" class="w-full text-xs text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-rose-50 file:text-rose-700 border border-gray-200 rounded-xl p-1 cursor-pointer">
+                </div>
+                <div id="edit-image-upload-preview" class="relative w-full h-36 bg-rose-50 rounded-xl overflow-hidden border border-rose-200">
+                    <img id="edit-preview-img-tag" src="" alt="Previsualización" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">O enlace de la foto (URL)</label>
+                    <input type="url" id="edit-prod-img" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-rose-500">
+                </div>
+                <div class="pt-2 flex gap-3">
+                    <button type="button" onclick="closeEditModal()" class="w-1/2 py-2.5 border border-gray-300 rounded-xl text-xs font-bold text-gray-600 hover:bg-gray-50 transition">Cancelar</button>
+                    <button type="submit" id="submit-edit-btn" class="w-1/2 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl text-xs shadow-md transition">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADD PRODUCT MODAL -->
+    <div id="add-modal" class="fixed inset-0 bg-gray-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative border border-rose-100 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2"><i data-lucide="plus-circle" class="w-5 h-5 text-rose-600"></i><span>Añadir Producto al Catálogo</span></h3>
+                <button onclick="closeAddModal()" class="text-gray-400 hover:text-rose-600 transition"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <form id="add-product-form" onsubmit="handleCreateProduct(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Nombre del arreglo</label>
+                    <input type="text" id="new-prod-name" required placeholder="Ej. Box de Rosas Eternas y Chocolates" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-rose-500">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Precio (S/)</label>
+                        <input type="number" step="0.50" id="new-prod-price" required placeholder="85.00" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-rose-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Precio Oferta (S/ - Opcional)</label>
+                        <input type="number" step="0.50" id="new-prod-sale-price" placeholder="Ej. 69.90" class="w-full border border-amber-300 bg-amber-50/30 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-amber-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Categoría</label>
+                    <select id="new-prod-category" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-rose-500"></select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Descripción / Detalles del arreglo</label>
+                    <textarea id="new-prod-description" rows="3" placeholder="Describe los componentes del arreglo..." class="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-rose-500"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Subir foto desde tu dispositivo</label>
+                    <input type="file" id="new-prod-file" accept="image/*" onchange="previewSelectedImage(event)" class="w-full text-xs text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-rose-50 file:text-rose-700 border border-gray-200 rounded-xl p-1 cursor-pointer">
+                </div>
+                <div id="image-upload-preview" class="hidden relative w-full h-36 bg-rose-50 rounded-xl overflow-hidden border border-rose-200">
+                    <img id="preview-img-tag" src="" alt="Previsualización" class="w-full h-full object-cover">
+                    <button type="button" onclick="clearImageSelection()" class="absolute top-2 right-2 bg-red-600 text-white p-1 rounded-full shadow-md"><i data-lucide="x" class="w-4 h-4"></i></button>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">O pegar enlace de la foto (URL)</label>
+                    <input type="url" id="new-prod-img" placeholder="https://ejemplo.com/imagen.jpg" class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-rose-500">
+                </div>
+                <div class="pt-2 flex gap-3">
+                    <button type="button" onclick="closeAddModal()" class="w-1/2 py-2.5 border border-gray-300 rounded-xl text-xs font-bold text-gray-600 hover:bg-gray-50 transition">Cancelar</button>
+                    <button type="submit" id="submit-prod-btn" class="w-1/2 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl text-xs shadow-md transition">Guardar Producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- CATEGORIES MANAGEMENT MODAL -->
+    <div id="cat-modal" class="fixed inset-0 bg-gray-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative border border-rose-100 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2"><i data-lucide="layers" class="w-5 h-5 text-rose-600"></i><span>Gestionar Categorías</span></h3>
+                <button onclick="closeCatModal()" class="text-gray-400 hover:text-rose-600 transition"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <form onsubmit="handleAddCategory(event)" class="space-y-3 mb-6 bg-rose-50/50 p-3.5 rounded-2xl border border-rose-100">
+                <label class="block text-xs font-bold text-gray-700">Agregar Nueva Categoría</label>
+                <div class="flex gap-2">
+                    <input type="text" id="new-cat-name" required placeholder="Ej. Ramos Gigantes" class="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-rose-500">
+                    <button type="submit" id="submit-cat-btn" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2 rounded-xl text-xs shadow-sm transition whitespace-nowrap flex items-center gap-1">
+                        <i data-lucide="save" class="w-3.5 h-3.5"></i>
+                        <span>Guardar</span>
+                    </button>
+                </div>
+                <p class="text-[10px] text-gray-400">Las categorías que guardes se actualizarán automáticamente en todos los dispositivos.</p>
+            </form>
+            <div class="space-y-2">
+                <label class="block text-xs font-bold text-gray-700">Categorías Guardadas en la Nube</label>
+                <div id="cat-list-admin" class="space-y-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUIZ MODAL -->
+    <div id="quiz-modal" class="fixed inset-0 bg-gray-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative border border-rose-100 text-center space-y-4">
+            <button onclick="closeQuizModal()" class="absolute top-4 right-4 text-gray-400 hover:text-rose-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
+            <h3 class="text-xl font-serif font-bold text-gray-900">¿Para quién es el detalle?</h3>
+            <p class="text-xs text-gray-500">Elige la ocasión y te filtraremos las mejores opciones de Quillabamba.</p>
+            <div class="grid grid-cols-2 gap-3 pt-2">
+                <button onclick="quizRecommend('rosas')" class="p-3 border border-rose-100 hover:border-rose-500 hover:bg-rose-50 rounded-2xl text-xs font-bold text-gray-700 transition flex flex-col items-center gap-1"><i data-lucide="heart" class="w-5 h-5 text-rose-500"></i><span>Amor & Aniversario</span></button>
+                <button onclick="quizRecommend('girasoles')" class="p-3 border border-rose-100 hover:border-rose-500 hover:bg-rose-50 rounded-2xl text-xs font-bold text-gray-700 transition flex flex-col items-center gap-1"><i data-lucide="sun" class="w-5 h-5 text-amber-500"></i><span>Cumpleaños / Alegría</span></button>
+                <button onclick="quizRecommend('boxes')" class="p-3 border border-rose-100 hover:border-rose-500 hover:bg-rose-50 rounded-2xl text-xs font-bold text-gray-700 transition flex flex-col items-center gap-1"><i data-lucide="gift" class="w-5 h-5 text-rose-600"></i><span>Día de la Madre</span></button>
+                <button onclick="quizRecommend('especiales')" class="p-3 border border-rose-100 hover:border-rose-500 hover:bg-rose-50 rounded-2xl text-xs font-bold text-gray-700 transition flex flex-col items-center gap-1"><i data-lucide="crown" class="w-5 h-5 text-amber-600"></i><span>Detalle Premium</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART SIDEBAR OVERLAY & PANEL -->
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-gray-950/50 backdrop-blur-xs z-40 hidden transition-opacity opacity-0"></div>
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-4 border-b border-rose-100 flex justify-between items-center bg-rose-50/60">
+            <div class="flex items-center gap-2">
+                <div class="bg-rose-600 text-white p-2 rounded-xl"><i data-lucide="shopping-bag" class="w-5 h-5"></i></div>
+                <div>
+                    <h2 class="font-serif font-bold text-gray-900 leading-tight">Tu Carrito de Regalos</h2>
+                    <p class="text-[10px] text-gray-500">Productos seleccionados de Ta' Linda</p>
+                </div>
+            </div>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-rose-600 p-1.5 rounded-full hover:bg-white transition"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-4 cart-scroll space-y-3">
+            <div id="empty-cart-msg" class="h-full flex flex-col items-center justify-center text-center p-6 text-gray-400">
+                <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center text-rose-300 mb-3"><i data-lucide="shopping-cart" class="w-8 h-8"></i></div>
+                <h4 class="font-bold text-gray-700 text-sm">Tu carrito está vacío</h4>
+                <p class="text-xs text-gray-400 mt-1">Explora nuestro catálogo y agrega tus arreglos florales favoritos.</p>
+            </div>
+        </div>
+        <div class="px-4 py-3 bg-rose-50/30 border-t border-rose-100 space-y-1.5">
+            <label class="block text-xs font-bold text-gray-700 flex items-center gap-1.5"><i data-lucide="pen-tool" class="w-3.5 h-3.5 text-rose-500"></i><span>Dedicatoria en la tarjeta (Gratis):</span></label>
+            <textarea id="cart-note" rows="2" placeholder="Escribe aquí tu mensaje especial..." class="w-full border border-rose-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-rose-500 bg-white"></textarea>
+        </div>
+        <div class="p-4 border-t border-rose-100 bg-white space-y-3">
+            <div class="flex justify-between items-center text-base font-bold text-gray-900">
+                <span>Total estimado:</span>
+                <span id="cart-total" class="text-xl text-rose-600 font-serif">S/ 0.00</span>
+            </div>
+            <p id="cart-error" class="text-rose-600 text-xs text-center hidden font-medium">Por favor agrega al menos un producto al carrito.</p>
+            <button onclick="checkoutWhatsApp()" class="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-3.5 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-green-100 transition transform active:scale-95">
+                <i data-lucide="message-circle" class="w-5 h-5"></i><span>Pedir por WhatsApp (927 274 783)</span>
+            </button>
+            <p class="text-[10px] text-center text-gray-400">Se enviará el detalle de tu lista directamente a nuestro WhatsApp oficial.</p>
+        </div>
+    </div>
+
+    <!-- MAIN APP STATE & GLOBAL CONSTANTS -->
+    <script>
+        const DEFAULT_CATEGORIES = [
+            { key: 'rosas', label: 'Rosas Eternas' },
+            { key: 'girasoles', label: 'Girasoles' },
+            { key: 'boxes', label: 'Boxes Elegantes' },
+            { key: 'especiales', label: 'Cúpulas & Packs' }
+        ];
+
+        const DEFAULT_PRODUCTS = [
+            { id: '1', name: 'Box Peluche y Rosas Eternas', price: 88.00, category: 'rosas', description: 'Arreglo romántico compuesto por rosas eternas en caja cilíndrica acompañada de un tierno peluche y moño satinado.', img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=600' },
+            { id: '2', name: 'Flores Amarillas Eternas Quillabamba', price: 99.00, category: 'girasoles', description: 'Arreglo luminoso en tono amarillo vibrante hecho de cintas eternas de larga duración.', img: 'https://images.unsplash.com/photo-1597826369062-81c15f606a4b?auto=format&fit=crop&q=80&w=600' },
+            { id: '3', name: 'Arreglo Floral Girasoles & Rosas', price: 77.00, category: 'girasoles', description: 'Combinación perfecta de girasoles eternos radiantes combinados con rosas rojas clásicas.', img: 'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&q=80&w=600' },
+            { id: '4', name: 'Girasoles Eternas en Bouquet', price: 58.00, category: 'girasoles', description: 'Ramo envolvente estilo bouquet con finos acabados en papel coreano e hilos dorados.', img: 'https://images.unsplash.com/photo-1508784411316-02b8cd4d3a3a?auto=format&fit=crop&q=80&w=600' },
+            { id: '5', name: 'Luxury Box 50 Rosas Eternas', price: 199.00, category: 'boxes', description: 'Caja gigante de presentación premium cargada con 50 rosas eternas rojas de seda.', img: 'https://images.unsplash.com/photo-1507028445749-e395dd8e7b9b?auto=format&fit=crop&q=80&w=600' },
+            { id: '6', name: 'Cúpula Encantada Bella y Bestia', price: 120.00, category: 'especiales', description: 'Cúpula de cristal con rosa eterna preservada e iluminación cálida LED a pilas.', img: 'https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=600' },
+            { id: '7', name: 'Ramo Premium Rosas & Chocolates', price: 145.00, category: 'rosas', description: 'Elegante bouquet compuesto por rosas eternas rojas intercaladas con bombones de chocolate.', img: 'https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&q=80&w=600' },
+            { id: '8', name: 'Caja Corazón con Rosas Eternas', price: 85.00, category: 'boxes', description: 'Caja en forma de corazón rellena de hermosas rosas eternas con dedicatoria especial.', img: 'https://images.unsplash.com/photo-1520786968037-3cbabf57a3e7?auto=format&fit=crop&q=80&w=600' }
+        ];
+
+        let categories = [];
+        let products = DEFAULT_PRODUCTS;
+        let isCategoriesLoadedFromCloud = false;
+        let cart = [], activeCategory = 'all', searchQuery = '', isAdminLoggedIn = false, uploadedImageBase64 = null, editedImageBase64 = null;
+        const ADMIN_PASS_HASH = "09e03d3600fc93bc9bfa1199320e4395e54d5d36e29ff2d81bc7e221b6ecb1bf";
+        const waNumber = "51927274783";
+        let secretClickCount = 0, secretClickTimer;
+    </script>
+
+    <!-- FIREBASE SDKs & CONFIGURATION -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Configuración de tu proyecto Firebase "talinda-floreria"
+        const firebaseConfig = {
+            apiKey: "AIzaSyBXNhjZD8tIRLrL3vnkfa0lMpCsRCJ_acQ",
+            authDomain: "talinda-floreria.firebaseapp.com",
+            projectId: "talinda-floreria",
+            storageBucket: "talinda-floreria.firebasestorage.app",
+            messagingSenderId: "461929158722",
+            appId: "1:461929158722:web:6344ea5e05793fb80375db",
+            measurementId: "G-KE6MH5HCV1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Exportar a ámbito global para que las funciones HTML puedan llamarlo
+        window.db = db;
+        window.collection = collection;
+        window.getDocs = getDocs;
+        window.addDoc = addDoc;
+        window.deleteDoc = deleteDoc;
+        window.doc = doc;
+        window.setDoc = setDoc;
+
+        // Escuchar productos en tiempo real desde la colección "productos"
+        onSnapshot(collection(db, "productos"), (snapshot) => {
+            let cloudProducts = [];
+            snapshot.forEach((docSnap) => {
+                cloudProducts.push({ id: docSnap.id, ...docSnap.data() });
+            });
+            if (cloudProducts.length > 0) {
+                products = cloudProducts;
+            } else {
+                products = DEFAULT_PRODUCTS;
+            }
+            renderProducts();
+        }, (error) => {
+            console.error("Error al escuchar productos en tiempo real:", error);
+        });
+
+        // Escuchar categorías en tiempo real desde la colección "categorias"
+        onSnapshot(collection(db, "categorias"), (snapshot) => {
+            let cloudCategories = [];
+            snapshot.forEach((docSnap) => {
+                cloudCategories.push({ key: docSnap.id, ...docSnap.data() });
+            });
+            if (cloudCategories.length > 0) {
+                categories = cloudCategories;
+                isCategoriesLoadedFromCloud = true;
+            } else {
+                if (!isCategoriesLoadedFromCloud) {
+                    categories = DEFAULT_CATEGORIES;
+                }
+            }
+            renderCategoriesNav();
+            renderAdminCategoriesList();
+            renderProducts();
+        }, (error) => {
+            console.error("Error al escuchar categorías en tiempo real:", error);
+            if (categories.length === 0) {
+                categories = DEFAULT_CATEGORIES;
+                renderCategoriesNav();
+            }
+        });
+    </script>
+
+    <!-- JS LOGIC AND UI FUNCTIONS -->
+    <script>
+        let gridElement, cartBadge, cartItemsContainer, emptyCartMsg, cartTotalEl, cartSidebar, cartOverlay, cartErrorMsg;
+        let productCountEl, adminAddBtn, adminCatBtn, addModal, editModal, catModal, quizModal, adminAuthModal, detailModal;
+
+        function initDOMElements() {
+            gridElement = document.getElementById('product-grid');
+            cartBadge = document.getElementById('cart-badge');
+            cartItemsContainer = document.getElementById('cart-items');
+            emptyCartMsg = document.getElementById('empty-cart-msg');
+            cartTotalEl = document.getElementById('cart-total');
+            cartSidebar = document.getElementById('cart-sidebar');
+            cartOverlay = document.getElementById('cart-overlay');
+            cartErrorMsg = document.getElementById('cart-error');
+            productCountEl = document.getElementById('product-count');
+            adminAddBtn = document.getElementById('admin-add-btn');
+            adminCatBtn = document.getElementById('admin-cat-btn');
+            addModal = document.getElementById('add-modal');
+            editModal = document.getElementById('edit-modal');
+            catModal = document.getElementById('cat-modal');
+            quizModal = document.getElementById('quiz-modal');
+            adminAuthModal = document.getElementById('admin-auth-modal');
+            detailModal = document.getElementById('detail-modal');
+        }
+
+        async function sha256(m) {
+            const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(m));
+            return Array.from(new Uint8Array(b)).map(x => x.toString(16).padStart(2, '0')).join('');
+        }
+
+        const getCategoryLabel = k => (categories.find(c => c.key === k) || {}).label || 'Arreglo Floral';
+
+        function renderCategoriesNav() {
+            const nav = document.getElementById('category-nav'), select = document.getElementById('new-prod-category'), editSelect = document.getElementById('edit-prod-category');
+            if (!nav || !select) return;
+            nav.innerHTML = ''; select.innerHTML = ''; if (editSelect) editSelect.innerHTML = '';
+
+            const allBtn = document.createElement('button');
+            allBtn.onclick = (e) => filterCategory('all', e.target);
+            allBtn.className = `nav-btn whitespace-nowrap ${activeCategory === 'all' ? 'text-rose-600 font-bold border-b-2 border-rose-600 pb-1' : 'hover:text-rose-600 transition pb-1'}`;
+            allBtn.textContent = 'Todas las Flores';
+            nav.appendChild(allBtn);
+
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.onclick = (e) => filterCategory(cat.key, e.target);
+                btn.className = `nav-btn whitespace-nowrap ${activeCategory === cat.key ? 'text-rose-600 font-bold border-b-2 border-rose-600 pb-1' : 'hover:text-rose-600 transition pb-1'}`;
+                btn.textContent = cat.label;
+                nav.appendChild(btn);
+
+                const option = document.createElement('option');
+                option.value = cat.key; option.textContent = cat.label;
+                select.appendChild(option);
+
+                if (editSelect) {
+                    const editOpt = document.createElement('option');
+                    editOpt.value = cat.key; editOpt.textContent = cat.label;
+                    editSelect.appendChild(editOpt);
+                }
+            });
+        }
+
+        function filterCategory(key, el) {
+            activeCategory = key;
+            document.querySelectorAll('.nav-btn').forEach(b => { b.classList.remove('text-rose-600', 'font-bold', 'border-b-2', 'border-rose-600'); b.classList.add('hover:text-rose-600'); });
+            if (el) { el.classList.add('text-rose-600', 'font-bold', 'border-b-2', 'border-rose-600'); el.classList.remove('hover:text-rose-600'); }
+            renderProducts();
+        }
+
+        function filterProductsBySearch(q) { searchQuery = q.toLowerCase().trim(); renderProducts(); }
+
+        function handleSecretAdminTrigger() {
+            secretClickCount++; clearTimeout(secretClickTimer);
+            if (secretClickCount >= 3) {
+                secretClickCount = 0;
+                if (!isAdminLoggedIn) openAdminAuthModal();
+                else { 
+                    isAdminLoggedIn = false; 
+                    adminAddBtn.classList.add('hidden'); 
+                    adminCatBtn.classList.add('hidden');
+                    renderProducts(); 
+                    showToast('Modo Dueño desactivado'); 
+                }
+            } else { secretClickTimer = setTimeout(() => { secretClickCount = 0; }, 1000); }
+        }
+
+        function openAdminAuthModal() { document.getElementById('admin-password-input').value = ''; document.getElementById('admin-auth-error').classList.add('hidden'); adminAuthModal.classList.remove('hidden'); }
+        function closeAdminAuthModal() { adminAuthModal.classList.add('hidden'); }
+
+        function togglePasswordVisibility() {
+            const input = document.getElementById('admin-password-input'), icon = document.getElementById('password-toggle-icon');
+            if (input.type === 'password') { input.type = 'text'; icon.setAttribute('data-lucide', 'eye-off'); }
+            else { input.type = 'password'; icon.setAttribute('data-lucide', 'eye'); }
+            lucide.createIcons();
+        }
+
+        async function verifyAdminPassword(e) {
+            e.preventDefault();
+            const p = document.getElementById('admin-password-input').value.trim();
+            if ((await sha256(p)) === ADMIN_PASS_HASH || p === "tamalitos050625") {
+                isAdminLoggedIn = true; closeAdminAuthModal();
+                adminAddBtn.classList.remove('hidden'); 
+                adminCatBtn.classList.remove('hidden');
+                renderProducts(); showToast('¡Modo Dueño activado!');
+            } else { document.getElementById('admin-auth-error').classList.remove('hidden'); }
+        }
+
+        function openAddModal() { addModal.classList.remove('hidden'); }
+        function openCatModal() { renderAdminCategoriesList(); catModal.classList.remove('hidden'); }
+        function closeCatModal() { catModal.classList.add('hidden'); }
+
+        async function handleAddCategory(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submit-cat-btn');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<span>Guardando...</span>`;
+            }
+
+            const input = document.getElementById('new-cat-name'), label = input.value.trim();
+            if (!label) return;
+            const catKey = label.toLowerCase().replace(/[^a-z0-9]/g, '') || ('cat_' + Date.now());
+            try {
+                await window.setDoc(window.doc(window.db, "categorias", catKey), { label });
+                input.value = '';
+                showToast(`Categoría "${label}" guardada en la nube`);
+            } catch(err) {
+                console.error("Error al guardar categoría:", err);
+                alert("No se pudo guardar la categoría en la nube.");
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `<i data-lucide="save" class="w-3.5 h-3.5"></i><span>Guardar</span>`;
+                    lucide.createIcons();
+                }
+            }
+        }
+
+        async function deleteCategory(k) {
+            if (categories.length <= 1) return alert('Debes mantener al menos una categoría.');
+            if (confirm('¿Eliminar esta categoría de la nube para todos los dispositivos?')) {
+                try {
+                    await window.deleteDoc(window.doc(window.db, "categorias", k));
+                    if (activeCategory === k) activeCategory = 'all';
+                    showToast('Categoría eliminada de la nube');
+                } catch(err) {
+                    console.error("Error al borrar categoría:", err);
+                    alert("No se pudo eliminar la categoría.");
+                }
+            }
+        }
+
+        function renderAdminCategoriesList() {
+            const list = document.getElementById('cat-list-admin'); if (!list) return;
+            list.innerHTML = '';
+            categories.forEach(c => {
+                const item = document.createElement('div');
+                item.className = 'flex items-center justify-between p-2.5 bg-gray-50 rounded-xl border border-gray-200 text-xs font-semibold text-gray-800';
+                item.innerHTML = `<span>${c.label}</span><button onclick="deleteCategory('${c.key}')" class="text-red-500 hover:text-red-700 p-1" title="Eliminar categoría"><i data-lucide="trash-2" class="w-4 h-4"></i></button>`;
+                list.appendChild(item);
+            });
+            lucide.createIcons();
+        }
+
+        function openQuizModal() { quizModal.classList.remove('hidden'); }
+        function closeQuizModal() { quizModal.classList.add('hidden'); }
+        function quizRecommend(cat) { closeQuizModal(); filterCategory(cat); document.getElementById('catálogo')?.scrollIntoView({ behavior: 'smooth' }); }
+
+        async function deleteProduct(id) {
+            if (confirm('¿Eliminar producto de la nube para todos los dispositivos?')) { 
+                try {
+                    await window.deleteDoc(window.doc(window.db, "productos", String(id)));
+                    showToast('Producto eliminado de la nube'); 
+                } catch(err) {
+                    console.error("Error al eliminar:", err);
+                    alert("No se pudo eliminar el producto.");
+                }
+            }
+        }
+
+        function openEditModal(id) {
+            const p = products.find(x => String(x.id) === String(id));
+            if (!p) return;
+            document.getElementById('edit-prod-id').value = p.id;
+            document.getElementById('edit-prod-name').value = p.name;
+            document.getElementById('edit-prod-price').value = p.price;
+            document.getElementById('edit-prod-sale-price').value = p.salePrice || '';
+            document.getElementById('edit-prod-category').value = p.category;
+            document.getElementById('edit-prod-description').value = p.description || '';
+            const imgUrl = p.img || '';
+            document.getElementById('edit-prod-img').value = imgUrl.startsWith('data:') ? '' : imgUrl;
+            document.getElementById('edit-preview-img-tag').src = imgUrl || 'https://images.unsplash.com/photo-1561541819-3f3d790403fd?auto=format&fit=crop&q=80&w=600';
+            editedImageBase64 = null;
+            editModal.classList.remove('hidden');
+        }
+
+        function closeEditModal() {
+            editModal.classList.add('hidden');
+            document.getElementById('edit-product-form').reset();
+            editedImageBase64 = null;
+        }
+
+        function previewEditSelectedImage(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = ev => {
+                    const img = new Image();
+                    img.src = ev.target.result;
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        const MAX_WIDTH = 800;
+                        const scaleSize = MAX_WIDTH / img.width;
+                        if (scaleSize < 1) {
+                            canvas.width = MAX_WIDTH;
+                            canvas.height = img.height * scaleSize;
+                        } else {
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                        }
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        editedImageBase64 = canvas.toDataURL('image/jpeg', 0.7);
+                        document.getElementById('edit-preview-img-tag').src = editedImageBase64;
+                    };
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        async function handleUpdateProduct(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submit-edit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Actualizando...';
+
+            const id = document.getElementById('edit-prod-id').value;
+            const name = document.getElementById('edit-prod-name').value.trim();
+            const price = parseFloat(document.getElementById('edit-prod-price').value);
+            const salePriceInput = document.getElementById('edit-prod-sale-price').value.trim();
+            const salePrice = salePriceInput ? parseFloat(salePriceInput) : null;
+            const category = document.getElementById('edit-prod-category').value;
+            const description = document.getElementById('edit-prod-description').value.trim();
+            const urlImg = document.getElementById('edit-prod-img').value.trim();
+
+            const pOriginal = products.find(x => String(x.id) === String(id));
+            const updatedProduct = {
+                name,
+                price,
+                salePrice,
+                category,
+                description,
+                img: editedImageBase64 || urlImg || pOriginal.img
+            };
+
+            try {
+                await window.setDoc(window.doc(window.db, "productos", String(id)), updatedProduct, { merge: true });
+                showToast('¡Producto actualizado en la nube!');
+                closeEditModal();
+            } catch (err) {
+                console.error("Error al actualizar en Firebase:", err);
+                alert("Hubo un error al actualizar el producto.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Guardar Cambios';
+            }
+        }
+
+        function renderProducts() {
+            if (!gridElement) return;
+            gridElement.innerHTML = '';
+            let list = activeCategory === 'all' ? products : products.filter(p => p.category === activeCategory);
+            if (searchQuery) list = list.filter(p => p.name.toLowerCase().includes(searchQuery) || (p.description && p.description.toLowerCase().includes(searchQuery)));
+            productCountEl.textContent = `Mostrando ${list.length} de ${products.length} productos`;
+
+            if (list.length === 0) {
+                gridElement.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400"><i data-lucide="flower" class="w-12 h-12 mx-auto mb-2 text-rose-300"></i><p class="font-medium text-sm">No se encontraron productos.</p></div>`;
+                lucide.createIcons(); return;
+            }
+
+            list.forEach(p => {
+                const isSale = p.salePrice && parseFloat(p.salePrice) < parseFloat(p.price);
+                const displayPrice = isSale ? parseFloat(p.salePrice) : parseFloat(p.price);
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative";
+                card.innerHTML = `
+                    ${isAdminLoggedIn ? `
+                        <div class="absolute top-3 right-3 flex gap-1.5 z-20">
+                            <button onclick="openEditModal('${p.id}')" class="bg-amber-500 hover:bg-amber-600 text-white p-2 rounded-xl shadow-md transition" title="Editar producto"><i data-lucide="edit" class="w-4 h-4"></i></button>
+                            <button onclick="deleteProduct('${p.id}')" class="bg-red-600 hover:bg-red-700 text-white p-2 rounded-xl shadow-md transition" title="Eliminar producto"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        </div>
+                    ` : ''}
+                    <div class="relative h-64 overflow-hidden bg-rose-50 cursor-pointer" onclick="openDetailModal('${p.id}')">
+                        <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1561541819-3f3d790403fd?auto=format&fit=crop&q=80&w=600'">
+                        <div class="absolute top-3 left-3 flex flex-col gap-1 items-start">
+                            <span class="bg-white/90 px-3 py-1 rounded-full border border-rose-100 text-[10px] font-bold text-rose-600 uppercase shadow-xs">${getCategoryLabel(p.category)}</span>
+                            ${isSale ? `<span class="bg-gradient-to-r from-amber-500 to-rose-600 text-white px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider shadow-md animate-pulse">¡En Oferta! 🔥</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+                        <div>
+                            <h3 onclick="openDetailModal('${p.id}')" class="font-serif font-bold text-gray-900 text-lg group-hover:text-rose-600 transition cursor-pointer line-clamp-1">${p.name}</h3>
+                            <p class="text-xs text-gray-500 mt-1 line-clamp-2">${p.description || 'Arreglo floral eterno hecho a mano.'}</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-rose-50/80">
+                            <div>
+                                <span class="text-[10px] text-gray-400 uppercase font-semibold block">Precio</span>
+                                ${isSale ? `
+                                    <div class="flex items-baseline gap-1.5">
+                                        <span class="text-xl font-bold text-rose-600 font-serif">S/ ${displayPrice.toFixed(2)}</span>
+                                        <span class="text-xs text-gray-400 line-through font-medium">S/ ${parseFloat(p.price).toFixed(2)}</span>
+                                    </div>
+                                ` : `
+                                    <span class="text-xl font-bold text-rose-600 font-serif">S/ ${displayPrice.toFixed(2)}</span>
+                                `}
+                            </div>
+                            <button onclick="addToCart('${p.id}')" class="bg-rose-50 hover:bg-rose-600 text-rose-600 hover:text-white p-3 rounded-2xl border border-rose-200 transition"><i data-lucide="shopping-bag" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                `;
+                gridElement.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function openDetailModal(id) {
+            const p = products.find(x => String(x.id) === String(id)); if (!p) return;
+            const isSale = p.salePrice && parseFloat(p.salePrice) < parseFloat(p.price);
+            const displayPrice = isSale ? parseFloat(p.salePrice) : parseFloat(p.price);
+
+            document.getElementById('detail-img').src = p.img;
+            document.getElementById('detail-category').textContent = getCategoryLabel(p.category);
+            document.getElementById('detail-name').textContent = p.name;
+            document.getElementById('detail-description').textContent = p.description || 'Sin descripción.';
+            document.getElementById('detail-price').textContent = `S/ ${displayPrice.toFixed(2)}`;
+            document.getElementById('detail-add-btn').onclick = () => { addToCart(p.id); closeDetailModal(); };
+            detailModal.classList.remove('hidden');
+        }
+
+        function closeDetailModal() { detailModal.classList.add('hidden'); }
+
+        function closeAddModal() { addModal.classList.add('hidden'); document.getElementById('add-product-form').reset(); clearImageSelection(); }
+        
+        function previewSelectedImage(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = ev => {
+                    const img = new Image();
+                    img.src = ev.target.result;
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        const MAX_WIDTH = 800;
+                        const scaleSize = MAX_WIDTH / img.width;
+                        if (scaleSize < 1) {
+                            canvas.width = MAX_WIDTH;
+                            canvas.height = img.height * scaleSize;
+                        } else {
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                        }
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        uploadedImageBase64 = canvas.toDataURL('image/jpeg', 0.7);
+                        document.getElementById('preview-img-tag').src = uploadedImageBase64;
+                        document.getElementById('image-upload-preview').classList.remove('hidden');
+                    };
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function clearImageSelection() {
+            uploadedImageBase64 = null;
+            if (document.getElementById('new-prod-file')) document.getElementById('new-prod-file').value = '';
+            if (document.getElementById('image-upload-preview')) document.getElementById('image-upload-preview').classList.add('hidden');
+        }
+
+        async function handleCreateProduct(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submit-prod-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Guardando...';
+
+            const name = document.getElementById('new-prod-name').value.trim();
+            const price = parseFloat(document.getElementById('new-prod-price').value);
+            const salePriceInput = document.getElementById('new-prod-sale-price').value.trim();
+            const salePrice = salePriceInput ? parseFloat(salePriceInput) : null;
+            const category = document.getElementById('new-prod-category').value;
+            const description = document.getElementById('new-prod-description').value.trim();
+            const urlImg = document.getElementById('new-prod-img').value.trim();
+
+            const newProduct = {
+                name,
+                price,
+                salePrice,
+                category,
+                description,
+                img: uploadedImageBase64 || urlImg || 'https://images.unsplash.com/photo-1561541819-3f3d790403fd?auto=format&fit=crop&q=80&w=600'
+            };
+
+            try {
+                await window.addDoc(window.collection(window.db, "productos"), newProduct);
+                showToast('¡Producto guardado en la nube!');
+                closeAddModal();
+            } catch (err) {
+                console.error("Error al guardar en Firebase:", err);
+                alert("Hubo un error al guardar en la nube.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Guardar Producto';
+            }
+        }
+
+        function toggleCart() {
+            if (cartSidebar.classList.contains('translate-x-full')) {
+                cartSidebar.classList.remove('translate-x-full'); cartOverlay.classList.remove('hidden');
+                setTimeout(() => cartOverlay.classList.remove('opacity-0'), 10);
+            } else {
+                cartSidebar.classList.add('translate-x-full'); cartOverlay.classList.add('opacity-0');
+                setTimeout(() => cartOverlay.classList.add('hidden'), 300);
+            }
+        }
+
+        function addToCart(id) {
+            const p = products.find(x => String(x.id) === String(id)); if (!p) return;
+            const item = cart.find(x => String(x.id) === String(id));
+            if (item) item.quantity++; else cart.push({ ...p, quantity: 1 });
+            updateCartUI(); showToast(`Añadido: ${p.name}`);
+        }
+
+        function updateQuantity(id, d) {
+            const item = cart.find(x => String(x.id) === String(id)); if (!item) return;
+            item.quantity += d; if (item.quantity <= 0) cart = cart.filter(x => String(x.id) !== String(id));
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            cartBadge.textContent = cart.reduce((s, i) => s + i.quantity, 0);
+            cartItemsContainer.innerHTML = '';
+            if (cart.length === 0) { cartItemsContainer.appendChild(emptyCartMsg); emptyCartMsg.classList.remove('hidden'); }
+            else {
+                emptyCartMsg.classList.add('hidden');
+                cart.forEach(item => {
+                    const isSale = item.salePrice && parseFloat(item.salePrice) < parseFloat(item.price);
+                    const itemPrice = isSale ? parseFloat(item.salePrice) : parseFloat(item.price);
+
+                    const el = document.createElement('div');
+                    el.className = "flex items-center gap-3 p-3 rounded-2xl bg-rose-50/40 border border-rose-100";
+                    el.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}" class="w-16 h-16 rounded-xl object-cover border border-rose-100">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-xs font-bold text-gray-800 truncate">${item.name}</h4>
+                            <span class="text-xs text-rose-600 font-bold">S/ ${itemPrice.toFixed(2)}</span>
+                            <div class="flex items-center gap-2 mt-1.5">
+                                <button onclick="updateQuantity('${item.id}', -1)" class="w-6 h-6 rounded-lg bg-white border text-xs font-bold">-</button>
+                                <span class="text-xs font-bold w-4 text-center">${item.quantity}</span>
+                                <button onclick="updateQuantity('${item.id}', 1)" class="w-6 h-6 rounded-lg bg-white border text-xs font-bold">+</button>
+                            </div>
+                        </div>
+                        <span class="text-xs font-bold font-serif">S/ ${(itemPrice * item.quantity).toFixed(2)}</span>
+                    `;
+                    cartItemsContainer.appendChild(el);
+                });
+            }
+            const total = cart.reduce((s, i) => {
+                const isSale = i.salePrice && parseFloat(i.salePrice) < parseFloat(i.price);
+                const itemPrice = isSale ? parseFloat(i.salePrice) : parseFloat(i.price);
+                return s + (itemPrice * i.quantity);
+            }, 0);
+            cartTotalEl.textContent = `S/ ${total.toFixed(2)}`; cartErrorMsg.classList.add('hidden');
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) return cartErrorMsg.classList.remove('hidden');
+            const note = document.getElementById('cart-note').value.trim();
+            const total = cart.reduce((s, i) => {
+                const isSale = i.salePrice && parseFloat(i.salePrice) < parseFloat(i.price);
+                const itemPrice = isSale ? parseFloat(i.salePrice) : parseFloat(i.price);
+                return s + (itemPrice * i.quantity);
+            }, 0);
+            let msg = `¡Hola *Ta' Linda Detalle y Regalos*! 🌸\nQuisiera realizar el siguiente pedido para Quillabamba:\n\n`;
+            cart.forEach((item, i) => {
+                const isSale = item.salePrice && parseFloat(item.salePrice) < parseFloat(item.price);
+                const itemPrice = isSale ? parseFloat(item.salePrice) : parseFloat(item.price);
+                msg += `${i + 1}. *${item.name}*\n   • Cantidad: ${item.quantity}\n   • Subtotal: S/ ${(itemPrice * item.quantity).toFixed(2)}\n\n`;
+            });
+            msg += `💰 *Monto Total:* S/ ${total.toFixed(2)}\n`;
+            if (note) msg += `💌 *Dedicatoria:* "${note}"\n`;
+            msg += `\n📍 Confírmenme métodos de pago y envío. ¡Gracias!`;
+            window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function showToast(text) {
+            const toast = document.getElementById('toast'); document.getElementById('toast-message').textContent = text;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => toast.classList.add('opacity-0', 'pointer-events-none'), 3000);
+        }
+
+        window.addEventListener('hashchange', checkHashAdmin);
+        function checkHashAdmin() { if (window.location.hash === '#admin') openAdminAuthModal(); }
+        
+        window.onload = function() { 
+            initDOMElements();
+            if (categories.length > 0) {
+                renderCategoriesNav(); 
+            }
+            renderProducts();
+            lucide.createIcons();
+            checkHashAdmin(); 
+        };
+    </script>
+</body>
+</html>
